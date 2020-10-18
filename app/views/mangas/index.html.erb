@@ -1,19 +1,19 @@
 <div class= "container" style = "width: 700px;">
     
     <div class= "row">
-        <div class = "col-sm-3 border" style = "background-color:white;">
+        <div class = "col-sm-3 border text-center" style = "background-color:white;">
                 <%= link_to (image_tag 'one.png', :size => "60x50"), free_manga_path %><br>
                 無料マンガ
         </div>
-        <div class = "col-sm-3 border" style = "background-color:white;">
+        <div class = "col-sm-3 border text-center" style = "background-color:white;">
                 <%= image_tag 'two.png', :size => "60x50" %><br>
                 マンガニュース
         </div>
-        <div class = "col-sm-3 border" style = "background-color:white;">
+        <div class = "col-sm-3 border text-center" style = "background-color:white;">
                 <%= image_tag 'three.png', :size => "60x50" %><br>
                 新連載ランキング
         </div>
-                <div class = "col-sm-3 border" style = "background-color:white;">
+                <div class = "col-sm-3 border text-center" style = "background-color:white;">
                 <%= image_tag 'four.png', :size => "60x50" %><br>
         使えるコマ
         </div>
@@ -38,10 +38,27 @@
 <%=render "carousel"%>
 </div>
 <br>
-<h3>【期間限定・大量】無料マンガ</h3>
-<p>期間限定で無料で多くの巻が読めるマンガを集めました！期間限定なので、読み忘れがないようにお気をつけください！</p>
-copy free manga
-<h3>新着ニュース</h3>
-copy news
+<div class= "container pt-5" style = "width: 700px;">
+    <h4>期間限定で大量に読める！無料マンガ</h4><br>
+    <div class= row>
+        <div class = "row row-cols-2">
 
-<h3>使えるコマ</h3>
+        <%@mangas.each do |manga|%>
+        <div class="card mb-3" style="max-width: 440px;">
+  <div class="row no-gutters">
+    <div class="col-md-4 p-1"  >
+      <%= link_to image_tag (manga.image_file_name), style: 'height:100%;width:100%;' %>
+    </div>
+    <div class="col-md-8" >
+      <div class="card-body" style="max-height: 150px;">
+        <h5 class="card-title"><%=manga.title %></h5>
+        <p class="card-text"><%=manga.author%></p>
+        <p class="card-text" style="color:orange;"><%=manga.description%></p>
+      </div>
+    </div>
+  </div>
+</div>
+        <% end %>
+        </div>
+    </div>
+</div>
